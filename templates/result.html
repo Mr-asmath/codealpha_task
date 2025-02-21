@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background-color:white">
+    <h1>Heart Disease Prediction Result</h1>
+
+    <h2>Prediction Result:</h2>
+    <p>{{ prediction_result }}</p>
+
+    <h2>Predictions:</h2>
+    <ul>
+        {% for alg_name, prediction in predictions.items() %}
+            <li>{{ alg_name }}: {{ prediction }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if graph_url %}
+        <img src="data:image/png;base64,{{ graph_url }}" alt="Prediction Graph">
+    {% endif %}
+</body>
+</html>
